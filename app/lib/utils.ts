@@ -1,5 +1,5 @@
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 // this is function which is used to merge tailwind classes with other classes
 // which combines the classes in a single string and if if has double value then the last value will be used

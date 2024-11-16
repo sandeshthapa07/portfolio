@@ -1,14 +1,11 @@
-import Link from "next/link";
-import React from "react";
+import Link from 'next/link';
+import React from 'react';
 
 const NotFound = () => {
   return (
-    <div className="flex flex-col justify-center gap-4 items-center h-screen w-full">
-      <h3 className="text-3xl font-bold">Back to where you </h3>
-      <Link
-        href="/"
-        className="text-green-700 text-4xl font-black underline uppercase"
-      >
+    <div className='flex h-screen w-full flex-col items-center justify-center gap-4'>
+      <h3 className='text-3xl font-bold'>Back to where you </h3>
+      <Link href='/' className='text-4xl font-black uppercase text-green-700 underline'>
         belong
       </Link>
     </div>
