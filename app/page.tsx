@@ -27,7 +27,7 @@ export default async function Home() {
               AITC international{' '}
             </a>
             {'   '}
-            <span>as a Frontend Developer</span>
+            <span>as a Frontend Developer.</span> 
           </p>
         </div>
       </div>
