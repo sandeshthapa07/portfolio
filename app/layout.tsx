@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
+import { ThemeProvider } from 'next-themes';
+
 import './globals.css';
 
 // If loading a variable font, you don't need to specify the font weight
@@ -24,7 +26,9 @@ export default function RootLayout({
           <Link href="/blog">Blog</Link>
           <Link href="/theme-changer">Theme Changer</Link>
         </aside> */}
-        <main className='scrollable-area flex-1'>{children}</main>
+        <ThemeProvider>
+          <main className='scrollable-area flex-1'>{children}</main>
+        </ThemeProvider>
       </body>
     </html>
   );
