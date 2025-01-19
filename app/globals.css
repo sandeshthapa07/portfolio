@@ -75,11 +75,11 @@
 }
 
 ::-moz-selection {
-  @apply text-selection-foreground bg-selection-background;
+  @apply bg-selection-background text-selection-foreground;
 }
 
 ::selection {
-  @apply text-selection-foreground bg-selection-background;
+  @apply bg-selection-background text-selection-foreground;
 }
 
 @media (max-width: 640px) {
