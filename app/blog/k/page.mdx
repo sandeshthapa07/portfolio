@@ -1,4 +1,4 @@
-import Code from "../../components/common/Code";
+import Code from '../../components/common/Code';
 
 export const metadata = {
   title: 'On Developer Experience',
@@ -15,8 +15,9 @@ highjfdf;lksdjfk;lsdf nm. sdfldmsl
 
 Then, import the RSC into a page or another component:
 
- <Code
-        code={`return (\\ [!code ++] use // instead of \\
+{' '}
+<Code
+  code={`return (\\ [!code ++] use // instead of \\
   <div className="rounded-lg bg-gradient-to-r from-sky-300 to-sky-500 p-4 !pr-0 md:p-8 lg:p-12 [&>pre]:rounded-none max-w-xl">\\ [!code --] use // instead of \\
     <div className="overflow-hidden rounded-s-lg">\\ [!code highlight] use // instead of \\
       <div className="flex items-center justify-between bg-gradient-to-r from-neutral-900 to-neutral-800 py-2 pl-2 pr-4 text-sm">
@@ -31,16 +32,12 @@ Then, import the RSC into a page or another component:
     </div>
   </div>
 );`}
-        lang="tsx"
-        theme="ayu-dark"
-        filename="app/page.tsx"
-      />
+  lang='tsx'
+  theme='ayu-dark'
+  filename='app/page.tsx'
+/>
 
 ```tsx src/app/rsc/page.tsx
-
-
-
-
 export default async function Page() {
   return (
     <main>

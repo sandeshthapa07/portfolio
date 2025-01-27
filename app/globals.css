@@ -31,12 +31,11 @@
   @apply mx-auto w-full lg:mb-0 lg:max-w-3xl;
 }
 
-
 .shiki {
   counter-reset: step;
   counter-increment: step 0;
   .line {
-    @apply border-l-4 border-transparent; 
+    @apply border-l-4 border-transparent;
     &::before {
       counter-increment: step;
       @apply mr-6 inline-block w-4 border-transparent text-right text-neutral-600 content-[counter(step)];
