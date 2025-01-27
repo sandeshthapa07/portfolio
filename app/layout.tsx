@@ -1,5 +1,8 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import Link from 'next/link';
+
+import { ThemeProvider } from 'next-themes';
 
 import './globals.css';
 
@@ -19,12 +22,15 @@ export default function RootLayout({
   return (
     <html lang='en' suppressHydrationWarning>
       <body className={`${inter.className} flex flex-row antialiased`}>
-        {/* <aside className="scrollable-area lg:w-60 xl:w-72 h-full bg-white text-black border-r border-gray-200 flex flex-col p-3  ">
-          <div className="flex flex-row gap-1"></div>
-          <Link href="/blog">Blog</Link>
-          <Link href="/theme-changer">Theme Changer</Link>
-        </aside> */}
-        <main className='scrollable-area flex-1'>{children}</main>
+        <ThemeProvider>
+          {' '}
+          <aside className='scrollable-area flex h-full flex-col border-r border-gray-200 bg-white p-3 text-black lg:w-60 xl:w-72'>
+            <div className='flex flex-row gap-1'></div>
+            <Link href='/blog'>Blog</Link>
+            <Link href='/theme-changer'>Theme Changer</Link>
+          </aside>
+          <main className='scrollable-area flex flex-1 flex-col items-center'>{children}</main>
+        </ThemeProvider>
       </body>
     </html>
   );
