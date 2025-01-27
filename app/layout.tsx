@@ -4,6 +4,7 @@ import Link from 'next/link';
 
 import { ThemeProvider } from 'next-themes';
 
+import ThemeChanger from './ThemeChanger';
 import './globals.css';
 
 // If loading a variable font, you don't need to specify the font weight
@@ -28,8 +29,9 @@ export default function RootLayout({
             <div className='flex flex-row gap-1'></div>
             <Link href='/blog'>Blog</Link>
             <Link href='/theme-changer'>Theme Changer</Link>
+            <ThemeChanger />
           </aside>
-          <main className='scrollable-area flex flex-1 flex-col items-center'>{children}</main>
+          <main className='scrollable-area m-10 flex flex-1 flex-col'>{children}</main>
         </ThemeProvider>
       </body>
     </html>
