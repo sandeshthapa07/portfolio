@@ -4,20 +4,17 @@ import type { NextConfig } from "next";
 
 
 const nextConfig: NextConfig = {
-  logging: {
-    fetches: {
-      fullUrl: true,
-    },
+  pageExtensions: ["js", "jsx", "mdx", "ts", "md", "tsx"],
+  reactStrictMode: true,
   
-  },
-  pageExtensions: ["ts", "tsx", "md", "mdx"],
- 
 };
  
 const withMDX = createMDX({
+  extension: /\.mdx?$/,
   
-});
  
+});
+
 export default withMDX(nextConfig);
 
 

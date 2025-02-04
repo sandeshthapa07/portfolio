@@ -1,10 +1,20 @@
-import Image from 'next/image';
-
 export default async function Home() {
   return (
     <div className='content-wrapper relative -mt-20 flex h-screen items-center justify-center'>
-      <div className='flex size-full items-center justify-center px-6 py-6 md:max-w-screen-sm md:px-8 md:py-12'>
-        <div className='flex flex-row flex-wrap'>
+      <div className='flex flex-col gap-1 md:max-w-screen-sm'>
+        <h1 className='text-lg font-medium'> Hello, I’m Sandesh Thapa</h1>
+
+        <p>
+          I give <span className='text-green-500'>life</span> and <span className='text-red-500'>emotion</span> to the
+          design{' '}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+{
+  /* <div className='flex flex-row flex-wrap'>
           <p className='text-gray-500'>
             <span>Hi, my name is </span>
             <button className='group relative text-black hover:underline'>
@@ -29,8 +39,5 @@ export default async function Home() {
             {'   '}
             <span>as a Frontend Developer.</span>
           </p>
-        </div>
-      </div>
-    </div>
-  );
+        </div> */
 }

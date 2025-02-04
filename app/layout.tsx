@@ -20,14 +20,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en' suppressHydrationWarning>
-      <body className={`${inter.className} flex flex-row antialiased`}>
-        {/* <aside className="scrollable-area lg:w-60 xl:w-72 h-full bg-white text-black border-r border-gray-200 flex flex-col p-3  ">
-          <div className="flex flex-row gap-1"></div>
-          <Link href="/blog">Blog</Link>
-          <Link href="/theme-changer">Theme Changer</Link>
-        </aside> */}
+      <body className={`${inter.className} flex flex-col items-center justify-center antialiased`}>
         <ThemeProvider>
-          <main className='scrollable-area flex-1'>{children}</main>
+          {/* {' '}
+          <aside className='scrollable-area flex h-full flex-col border-r border-gray-200 p-3 text-black lg:w-60 xl:w-72'>
+            <div className='flex flex-row gap-1'></div>
+            <Link href='/blog'>Blog</Link>
+            <Link href='/theme-changer'>Theme Changer</Link> */}
+
+          {/* </aside> */}
+          <main className='scrollable-area m-10 flex flex-1 flex-col'>
+            {/* <ThemeChanger /> */}
+            {children}
+          </main>
         </ThemeProvider>
       </body>
     </html>
