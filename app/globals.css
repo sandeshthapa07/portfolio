@@ -15,6 +15,7 @@
     --border: 252 3% 94%;
     --input: 252 3% 94%;
     --primary: 240 5.9% 10%;
+    --svg-fill: var(--primary-foreground);
     --primary-foreground: 0 0% 98%;
     --secondary: 72 11% 35%;
     --secondary-foreground: 0 0% 100%;
@@ -50,6 +51,7 @@
     --border: 0 0% 15.69%;
     --input: 0 0% 10.98%;
     --primary: 0 0% 98%;
+    --svg-fill: var(--primary-foreground);
     --primary-foreground: 240 5.9% 10%;
     --secondary: 164.12 100% 80%;
     --secondary-foreground: 0 0% 0%;
@@ -93,6 +95,153 @@ body::-webkit-scrollbar {
   display: none;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+}
+html {
+  /* @apply text-default bg-background text-foreground; */
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-medium;
+  }
+
+  /* h3, */
+  sub,
+  sup {
+    @apply text-muted;
+  }
+
+  /* sub {
+    @apply text-small;
+  } */
+
+  a {
+    @apply text-green-500 transition hover:opacity-50;
+  }
+
+  ol {
+    @apply list-decimal;
+  }
+
+  ul {
+    @apply list-disc;
+  }
+
+  kbd {
+    @apply mx-1;
+
+    display: inline-block;
+    min-width: 20px;
+    height: 20px;
+    min-height: 20px;
+    padding: 0 6px;
+    font-size: 12px;
+    line-height: 20px;
+    text-align: center;
+    background: var(--kbd-background);
+    border-radius: 4px;
+    box-shadow: 0 0 0 1px var(--kbd-border);
+  }
+}
+
+article {
+  h1 + h2 {
+    margin-top: 4px !important;
+    font-weight: 600;
+  }
+
+  h1 + p,
+  h2 + p {
+    margin-top: 8px !important;
+  }
+
+  figure + h1,
+  p + h1 {
+    margin-top: 48px !important;
+  }
+
+  p:not(:first-child),
+  h1:not(:first-child),
+  h2:not(:first-child),
+  h3:not(:first-child),
+  h4:not(:first-child),
+  h5:not(:first-child),
+  h6:not(:first-child),
+  blockquote:not(:first-child),
+  ul:not(:first-child),
+  ol:not(:first-child),
+  pre:not(:first-child),
+  figure:not(:first-child) {
+    margin-top: 24px;
+    line-height: 1.625rem;
+  }
+
+  /*
+  * This handles our highlighting on selection of a table of contents item.
+  */
+
+  [data-highlight] {
+    @apply relative;
+  }
+
+  [data-highlight]::before {
+    @apply absolute inset-0 -inset-x-1 -z-10 scale-y-[1.1] bg-transparent transition duration-500 content-[""];
+  }
+
+  [data-highlight='true']::before {
+    @apply scale-y-110 bg-highlight-background text-highlight-foreground !important;
+  }
+
+  [data-highlight='false']::before {
+    @apply scale-y-100 bg-transparent;
+  }
+
+  /* 
+  * Here we are setting up the styles for our footnotes and references.
+  */
+
+  .footnotes {
+    position: relative;
+    padding-top: 16px;
+    margin-top: 64px !important;
+    border-top: 1px solid var(--border);
+  }
+
+  .footnotes ol {
+    position: relative;
+    display: block;
+    padding: 0 0 0 4px;
+    margin-top: 16px !important;
+    list-style: none;
+  }
+
+  .footnotes li {
+    margin-top: 0 !important;
+  }
+
+  .footnotes ol li {
+    position: relative;
+    padding-top: 4px;
+    padding-left: 6px;
+    font-size: 12px;
+    color: var(--muted);
+    counter-increment: list;
+  }
+
+  .footnotes ol li::before {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    font-size: 8px;
+    content: counter(list);
+  }
+
+  .footnotes ol li p a {
+    z-index: 2;
+  }
 }
 
 .shiki {

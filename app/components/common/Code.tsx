@@ -19,7 +19,7 @@ export default async function Code({ code, lang = 'javascript', theme = 'nord', 
   });
 
   return (
-    <div className='max-w-xl rounded-lg'>
+    <div className='my-4 max-w-xl rounded-lg border border-neutral-700'>
       <div className='rounded-lg'>
         <div className='flex items-center justify-between py-2 pl-2 pr-4 text-sm'>
           <span className=''>{filename}</span>

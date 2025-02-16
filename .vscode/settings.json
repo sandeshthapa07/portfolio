@@ -1,5 +1,7 @@
 {
   "editor.formatOnSave": true,
+  "editor.wordWrap": "on",
+
   "editor.codeActionsOnSave": {
     "source.fixAll": "always",
     "source.organizeImports": "always"
