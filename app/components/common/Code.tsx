@@ -11,10 +11,13 @@ type Props = {
   theme?: BundledTheme;
   filename?: string;
 };
-export default async function Code({ code, lang = 'javascript', theme = 'nord', filename }: Readonly<Props>) {
+export default async function Code({ code, lang = 'javascript', filename }: Readonly<Props>) {
   const html = await codeToHtml(code, {
     lang,
-    theme,
+    themes: {
+      light: 'vitesse-light',
+      dark: 'github-dark',
+    },
     transformers: [transformerNotationHighlight(), transformerNotationDiff()],
   });
 
@@ -25,10 +28,7 @@ export default async function Code({ code, lang = 'javascript', theme = 'nord', 
           <span className=''>{filename}</span>
           <CopyToClipboard code={code} />
         </div>
-        <div
-          className='border-t-2 border-neutral-700 text-sm [&>pre]:overflow-x-auto [&>pre]:!bg-neutral-900 [&>pre]:py-3 [&>pre]:pl-4 [&>pre]:pr-5 [&>pre]:leading-snug [&_code]:block [&_code]:w-fit [&_code]:min-w-full'
-          dangerouslySetInnerHTML={{ __html: html }}
-        ></div>
+        <div className='code-data overflow-x-auto' dangerouslySetInnerHTML={{ __html: html }}></div>
       </div>
     </div>
   );

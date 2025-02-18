@@ -163,88 +163,55 @@ article {
     margin-top: 48px !important;
   }
 
-  p:not(:first-child),
-  h1:not(:first-child),
-  h2:not(:first-child),
-  h3:not(:first-child),
-  h4:not(:first-child),
-  h5:not(:first-child),
-  h6:not(:first-child),
-  blockquote:not(:first-child),
-  ul:not(:first-child),
-  ol:not(:first-child),
-  pre:not(:first-child),
-  figure:not(:first-child) {
-    margin-top: 24px;
-    line-height: 1.625rem;
-  }
-
-  /*
-  * This handles our highlighting on selection of a table of contents item.
-  */
-
-  [data-highlight] {
-    @apply relative;
-  }
-
-  [data-highlight]::before {
-    @apply absolute inset-0 -inset-x-1 -z-10 scale-y-[1.1] bg-transparent transition duration-500 content-[""];
-  }
-
-  [data-highlight='true']::before {
-    @apply scale-y-110 bg-highlight-background text-highlight-foreground !important;
-  }
-
-  [data-highlight='false']::before {
-    @apply scale-y-100 bg-transparent;
-  }
-
-  /* 
-  * Here we are setting up the styles for our footnotes and references.
-  */
-
-  .footnotes {
-    position: relative;
-    padding-top: 16px;
-    margin-top: 64px !important;
-    border-top: 1px solid var(--border);
-  }
-
-  .footnotes ol {
-    position: relative;
-    display: block;
-    padding: 0 0 0 4px;
-    margin-top: 16px !important;
-    list-style: none;
-  }
-
-  .footnotes li {
-    margin-top: 0 !important;
-  }
-
-  .footnotes ol li {
-    position: relative;
-    padding-top: 4px;
-    padding-left: 6px;
-    font-size: 12px;
-    color: var(--muted);
-    counter-increment: list;
-  }
-
-  .footnotes ol li::before {
-    position: absolute;
-    top: 0;
-    right: 100%;
-    font-size: 8px;
-    content: counter(list);
-  }
-
-  .footnotes ol li p a {
-    z-index: 2;
+  figure {
+    width: 100%;
+    margin-top: 4px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-base);
   }
 }
 
-.shiki {
+p:not(:first-child),
+h1:not(:first-child),
+h2:not(:first-child),
+h3:not(:first-child),
+h4:not(:first-child),
+h5:not(:first-child),
+h6:not(:first-child),
+blockquote:not(:first-child),
+ul:not(:first-child),
+ol:not(:first-child),
+/* pre:not(:first-child), */
+figure:not(:first-child) {
+  margin-top: 24px;
+  line-height: 1.625rem;
+}
+
+/*
+  * This handles our highlighting on selection of a table of contents item.
+  */
+
+[data-highlight] {
+  @apply relative;
+}
+
+[data-highlight]::before {
+  @apply absolute inset-0 -inset-x-1 -z-10 scale-y-[1.1] bg-transparent transition duration-500 content-[""];
+}
+
+[data-highlight='true']::before {
+  @apply scale-y-110 bg-highlight-background text-highlight-foreground !important;
+}
+
+[data-highlight='false']::before {
+  @apply scale-y-100 bg-transparent;
+}
+
+/* 
+  * Here we are setting up the styles for our footnotes and references.
+  */
+
+/* .shiki {
   counter-reset: step;
   counter-increment: step 0;
   .line {
@@ -281,4 +248,18 @@ article {
       }
     }
   }
+} */
+
+.code-data > pre {
+  @apply w-fit p-4;
+}
+
+[data-theme='dark'] .shiki,
+[data-theme='dark'] .shiki span {
+  color: var(--shiki-dark) !important;
+  background-color: var(--shiki-dark-bg) !important;
+  /* Optional, if you also want font styles */
+  font-style: var(--shiki-dark-font-style) !important;
+  font-weight: var(--shiki-dark-font-weight) !important;
+  text-decoration: var(--shiki-dark-text-decoration) !important;
 }

@@ -20,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en' suppressHydrationWarning>
+    <html lang='en' className='light' suppressHydrationWarning>
       <body className={`${inter.className} group relative flex flex-col items-center justify-center antialiased`}>
         <ThemeProvider enableSystem>
           {/* {' '}
@@ -32,7 +32,7 @@ export default function RootLayout({
           {/* </aside> */}
           <main className='scrollable-area m-10 flex w-full max-w-2xl flex-1 flex-col'>
             {/* <ThemeChanger /> */}
-            <article className=''>{children}</article>
+            {children}
           </main>
 
           <GooeyMenu />

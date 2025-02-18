@@ -15,9 +15,9 @@ export function GooeyMenu() {
 
   return (
     <>
-      <div className='fixed bottom-0 right-0 z-20 h-[300px] w-full'>
+      <div className='fixed bottom-0 right-0 z-20 h-[300px] w-12'>
         <nav
-          className='menu'
+          className='menu w-fit'
           style={
             {
               filter: 'url(#gooey)',
@@ -30,7 +30,7 @@ export function GooeyMenu() {
         >
           <input type='checkbox' className='peer hidden' name='menu' id='menu' />
           <label
-            className='absolute bottom-10 right-10 z-10 flex h-14 w-14 scale-125 cursor-pointer items-center justify-center rounded-full bg-primary text-primary-foreground transition-all duration-1000 ease-[var(--spring-easing)] peer-checked:scale-100'
+            className='absolute bottom-10 right-10 z-10 flex h-14 w-14 cursor-pointer items-center justify-center rounded-full bg-primary text-primary-foreground transition-all duration-1000 ease-[var(--spring-easing)]'
             htmlFor='menu'
           >
             <GiHamburgerMenu className='text-primary-foreground-light-2 dark:text-primary-foreground-dark-1 h-5 w-5' />
