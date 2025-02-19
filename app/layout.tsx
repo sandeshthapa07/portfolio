@@ -20,9 +20,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en' className='light' suppressHydrationWarning>
+    <html lang='en' suppressHydrationWarning>
       <body className={`${inter.className} group relative flex flex-col items-center justify-center antialiased`}>
-        <ThemeProvider enableSystem>
+        <ThemeProvider enableSystem disableTransitionOnChange>
           {/* {' '}
           <aside className='scrollable-area flex h-full flex-col border-r border-gray-200 p-3 text-black lg:w-60 xl:w-72'>
             <div className='flex flex-row gap-1'></div>

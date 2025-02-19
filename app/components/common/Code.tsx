@@ -1,4 +1,3 @@
-import { transformerNotationDiff, transformerNotationHighlight } from '@shikijs/transformers';
 // [!code ++]
 import type { BundledLanguage, BundledTheme } from 'shiki';
 import { codeToHtml } from 'shiki';
@@ -18,7 +17,6 @@ export default async function Code({ code, lang = 'javascript', filename }: Read
       light: 'vitesse-light',
       dark: 'github-dark',
     },
-    transformers: [transformerNotationHighlight(), transformerNotationDiff()],
   });
 
   return (

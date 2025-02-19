@@ -211,7 +211,7 @@ figure:not(:first-child) {
   * Here we are setting up the styles for our footnotes and references.
   */
 
-/* .shiki {
+.shiki {
   counter-reset: step;
   counter-increment: step 0;
   .line {
@@ -248,7 +248,7 @@ figure:not(:first-child) {
       }
     }
   }
-} */
+}
 
 .code-data > pre {
   @apply w-fit p-4;

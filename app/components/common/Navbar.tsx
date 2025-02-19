@@ -1,12 +1,23 @@
 'use client';
 
+import { useEffect, useState } from 'react';
+
 import { useTheme } from 'next-themes';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { IoMdMoon } from 'react-icons/io';
 import { MdOutlineHome, MdOutlineWbSunny } from 'react-icons/md';
 
 export function GooeyMenu() {
+  const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
 
   const playSound = () => {
     const audio = new Audio('/audio/switch.mp3'); // Add sound file in public folder
