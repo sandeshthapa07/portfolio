@@ -1,3 +1,5 @@
+import { Suspense } from 'react';
+
 import { MdOutlineIosShare } from 'react-icons/md';
 
 const layout = ({ children }: { children: React.ReactNode }) => {
@@ -7,8 +9,12 @@ const layout = ({ children }: { children: React.ReactNode }) => {
         <div>
           <h1 className='text-lg font-semibold'>On developer experience</h1>
           <div className='mt-2 flex items-center space-x-2'>
-            <span className='text-sm text-primary/70'>11/08/2023</span>
-            <span className='text-sm text-primary/70'> 200 views</span>
+            <Suspense fallback={<div className='h-8 w-8 rounded-full bg-primary/20' />}>
+              <span className='text-sm text-primary/70'>11/08/2023</span>
+            </Suspense>
+            <Suspense fallback={<div className='h-8 w-8 rounded-full bg-primary/20' />}>
+              <span className='text-sm text-primary/70'> 200 views</span>
+            </Suspense>
           </div>
         </div>
         <button className='h-fit rounded-full bg-primary/10 p-2'>
