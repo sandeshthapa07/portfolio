@@ -39,6 +39,7 @@
     --radius-large: 12px;
   }
 
+  
   [data-theme='dark'] {
     --background: 270, 5%, 7%;
     --foreground: 252 37% 98%;

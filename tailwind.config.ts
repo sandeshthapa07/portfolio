@@ -7,7 +7,7 @@ const config: Config = {
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    darkMode: ['selector', '[data-mode="dark"]'],
+    darkMode: 'media',
     extend: {
       colors: {
         border: 'hsl(var(--border))',

@@ -1,24 +1,12 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-
-import { useTheme } from 'next-themes';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { IoMdMoon } from 'react-icons/io';
 import { MdOutlineHome, MdOutlineWbSunny } from 'react-icons/md';
 
-export function GooeyMenu() {
-  const [mounted, setMounted] = useState(false);
-  const { theme, setTheme } = useTheme();
+import { themeSwitcher } from '@/app/actions/themeswitcher';
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return null;
-  }
-
+export function GooeyMenu({ theme }: { theme?: string }) {
   const playSound = () => {
     const audio = new Audio('/audio/switch.mp3'); // Add sound file in public folder
     audio.play();
@@ -55,19 +43,19 @@ export function GooeyMenu() {
             <MdOutlineHome className='h-5 w-5 text-primary-foreground' />
           </button>
           <button
-            onClick={() => {
-              setTheme(theme === 'dark' ? 'light' : 'dark');
+            onClick={async () => {
+              await themeSwitcher(theme === 'dark' ? 'light' : 'dark');
+
               playSound();
             }}
             className='absolute bottom-10 right-10 flex h-14 w-14 items-center justify-center rounded-full bg-primary text-primary-foreground transition-transform duration-300 ease-in peer-checked:translate-y-[-162px] peer-checked:duration-1000 peer-checked:ease-[var(--spring-easing)]'
           >
             {/* <HeartIcon className='text-primary-foreground-light-2 dark:text-primary-foreground-dark-1 h-5 w-5' /> */}
             {/* <span>menu3</span> */}
-            {theme === 'dark' ? (
-              <IoMdMoon className='text-primary-foreground-light-2 dark:text-primary-foreground-dark-1 h-5 w-5' />
-            ) : (
-              <MdOutlineWbSunny className='text-primary-foreground-light-2 dark:text-primary-foreground-dark-1 h-5 w-5' />
-            )}
+
+            <IoMdMoon className='text-primary-foreground-light-2 dark:text-primary-foreground-dark-1 hidden h-5 w-5 dark:block' />
+
+            <MdOutlineWbSunny className='text-primary-foreground-light-2 dark:text-primary-foreground-dark-1 block h-5 w-5 dark:hidden' />
           </button>
         </nav>
         <svg className='absolute hidden' width='0' height='0' xmlns='http://www.w3.org/2000/svg' version='1.1'>
