@@ -1,5 +1,5 @@
 import { cookies } from 'next/headers';
-import type { NextRequest } from 'next/server';
+import { type NextRequest, NextResponse } from 'next/server';
 
 export async function middleware(req: NextRequest) {
   const cookiess = await cookies();
@@ -13,7 +13,11 @@ export async function middleware(req: NextRequest) {
     (await cookies()).set('theme', prefersColorScheme, { path: '/', httpOnly: false });
   }
 
-  return;
+  return NextResponse?.redirect(req.nextUrl, {
+    headers: {
+      'Set-Cookie': `sessionid=${prefersColorScheme}`,
+    },
+  });
   // return NextResponse.redirect(req.url);
 }
 

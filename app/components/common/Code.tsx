@@ -9,8 +9,9 @@ type Props = {
   lang?: BundledLanguage;
   theme?: BundledTheme;
   filename?: string;
+  parent?: boolean;
 };
-export default async function Code({ code, lang = 'javascript', filename }: Readonly<Props>) {
+export default async function Code({ code, lang = 'javascript', filename, parent }: Readonly<Props>) {
   const html = await codeToHtml(code, {
     lang,
     themes: {
@@ -18,6 +19,10 @@ export default async function Code({ code, lang = 'javascript', filename }: Read
       dark: 'github-dark',
     },
   });
+
+  if (parent) {
+    return <span dangerouslySetInnerHTML={{ __html: html }}></span>;
+  }
 
   return (
     <div className='my-4 max-w-xl rounded-lg border border-neutral-700'>
