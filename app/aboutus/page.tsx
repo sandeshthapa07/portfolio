@@ -1,4 +1,4 @@
-import Signature from './Signature';
+import Nav from './Signature';
 
 const Page = () => {
   return (
@@ -27,7 +27,7 @@ const Page = () => {
       >
         Send Email{' '}
       </a>
-      <Signature />
+      <Nav />
 
       <p className='text-sm font-thin text-primary'>Your Developer </p>
       <a href='https://x.com/sandeslambu' target='_blank'>

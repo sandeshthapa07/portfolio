@@ -97,7 +97,7 @@ body::-webkit-scrollbar {
   scrollbar-width: none; /* Firefox */
 }
 html {
-  /* @apply text-default bg-background text-foreground; */
+  @apply bg-background text-foreground;
 
   h1,
   h2,
@@ -113,10 +113,6 @@ html {
   sup {
     @apply text-muted;
   }
-
-  /* sub {
-    @apply text-small;
-  } */
 
   a {
     @apply text-green-500 transition hover:opacity-50;
@@ -262,4 +258,43 @@ figure:not(:first-child) {
   font-style: var(--shiki-dark-font-style) !important;
   font-weight: var(--shiki-dark-font-weight) !important;
   text-decoration: var(--shiki-dark-text-decoration) !important;
+}
+
+[data-support-yes],
+[data-support-no] {
+  display: none;
+}
+
+@supports (view-transition-name: test) {
+  [data-support] [data-support-yes] {
+    display: inline;
+  }
+  [data-support] [data-support-no] {
+    display: none;
+  }
+}
+
+@supports not (view-transition-name: test) {
+  [data-support] [data-support-yes] {
+    display: none;
+  }
+  [data-support] [data-support-no] {
+    display: inline;
+  }
+}
+
+/* Safari */
+@supports (-webkit-hyphens: none) and (not (-moz-appearance: none)) {
+  [data-support] [data-support-yes] {
+    display: none;
+  }
+  [data-support] [data-support-no] {
+    display: inline;
+  }
+}
+
+h1,
+h2,
+h3.h4 {
+  font-size: 1.25rem !important;
 }

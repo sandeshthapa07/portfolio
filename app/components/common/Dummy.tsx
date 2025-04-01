@@ -1,5 +1,69 @@
+import Code from "./Code";
+
 const Dummy = () => {
-  return <div>Dummy</div>;
+  return (
+    <div>
+      import Code from '../../components/common/Code'; This is text about developer experience. This is text about
+      developer experience.This is text about developer experience.This is text about developer experience.This is text
+      about developer experience.This is text about developer experience.This is text about developer experience.This is
+      text about developer experience.This is text about developer experience.This is text about developer
+      experience.This is text about developer experience.This is text about developer experience.This is text about
+      developer experience.This is text about developer experience.This is text about developer experience.This is text
+      about developer experience.This is text about developer experience.This is text about developer experience.This is
+      text about developer experience.This is text about developer experience.This is text about developer
+      experience.This is text about developer experience.This is text about developer experience.This is text about
+      developer experience.This is text about developer experience.This is text about developer experience.This is text
+      about developer experience.This is text about developer experience.This is text about developer experience.This is
+      text about developer experience.This is text about developer experience.This is text about developer
+      experience.This is text about developer experience.This is text about developer experience.This is text about
+      developer experience.This is text about developer experience.This is text about developer experience.This is text
+      about developer experience.This is text about developer experience.This is text about developer experience.This is
+      text about developer experience.This is text about developer experience.This is text about developer
+      experience.This is text about developer experience.This is text about developer experience.This is text about
+      developer experience. - `NEXT_PUBLIC_SITE_URL`: <Code parent code={` const a`} /> The URL of your website. ## What
+      is Developer Experience? sandes thapa is dangerouslySetInnerHTML dfdsf dsf ### k k xa kta ho
+      `NEXT_PUBLIC_SITE_URL` is the URL of your website. ```bash pnpm postbuild ``` [Click here](/) to go home. [Click
+      here](https://www.michael.fm/kanon/tanjiblocks-startup-pivot) to go home. [Click
+      here](#what-is-developer-experience?) to go home.
+      <Code
+        code={`return (\\ [!code ++] use // instead of \\
+  <div className="rounded-lg bg-gradient-to-r
+   from-sky-300 to-sky-500 p-4 !pr-0 md:p-8 lg:p-12 [&>pre]:rounded-none max-w-xl">
+   \\ [!code --] use // instead of \\
+    <div className="overflow-hidden rounded-s-lg">
+    \\ [!code highlight] use // instead of \\
+      <div className="flex items-center justify-between bg-gradient-to-r
+       from-neutral-900 to-neutral-800 py-2 pl-2 pr-4 text-sm">
+        <span className="-mb-[calc(0.5rem+2px)] rounded-t-lg border-2
+         border-white/5 border-b-neutral-700 bg-neutral-800 px-4 py-2 ">
+          {filename}
+        </span>
+      </div>
+     
+    </div>
+  </div>
+);`}
+      />
+      This is text about developer experience. This is text about developer experience.This is text about developer
+      experience.This is text about developer experience.This is text about developer experience.This is text about
+      developer experience.This is text about developer experience.This is text about developer experience.This is text
+      about developer experience.This is text about developer experience.This is text about developer experience.This is
+      text about developer experience.This is text about developer experience.This is text about developer
+      experience.This is text about developer experience.This is text about developer experience.This is text about
+      developer experience.This is text about developer experience.This is text about developer experience.This is text
+      about developer experience.This is text about developer experience.This is text about developer experience.This is
+      text about developer experience.This is text about developer experience.This is text about developer
+      experience.This is text about developer experience.This is text about developer experience.This is text about
+      developer experience.This is text about developer experience.This is text about developer experience.This is text
+      about developer experience.This is text about developer experience.This is text about developer experience.This is
+      text about developer experience.This is text about developer experience.This is text about developer
+      experience.This is text about developer experience.This is text about developer experience.This is text about
+      developer experience.This is text about developer experience.This is text about developer experience.This is text
+      about developer experience.This is text about developer experience.This is text about developer experience.This is
+      text about developer experience.This is text about developer experience. - `NEXT_PUBLIC_SITE_URL`: The URL of your
+      website. ## What is Developer Experience?
+    </div>
+  );
 };
 
 export default Dummy;
