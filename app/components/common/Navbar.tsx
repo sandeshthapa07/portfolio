@@ -8,7 +8,7 @@ import { MdOutlineHome, MdOutlineWbSunny } from 'react-icons/md';
 import { themeSwitcher } from '@/app/actions/themeswitcher';
 
 export function GooeyMenu() {
-  const { setTheme, theme } = useTheme();
+  const { theme } = useTheme();
   const playSound = () => {
     const audio = new Audio('/audio/switch.mp3'); // Add sound file in public folder
     audio.play();

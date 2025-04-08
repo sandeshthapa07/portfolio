@@ -3,8 +3,6 @@
 import Link from 'next/link';
 import { unstable_ViewTransition as ViewTransition } from 'react';
 
-import Dummy from '../components/common/Dummy';
-
 const Page = () => {
   return (
     <ViewTransition>
@@ -14,7 +12,6 @@ const Page = () => {
         </ViewTransition>
       </div>
       <Link href='/blog/k'>Home df</Link>
-      <Dummy />
     </ViewTransition>
   );
 };

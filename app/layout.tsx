@@ -39,7 +39,7 @@ export default async function RootLayout({
             {children}
           </main>
 
-          <GooeyMenu theme={'light'} />
+          <GooeyMenu />
         </ThemeProvider>
       </body>
     </html>

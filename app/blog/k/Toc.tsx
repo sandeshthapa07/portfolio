@@ -39,7 +39,7 @@ const Toc = () => {
 
   const mouseY = useMotionValue(Infinity);
   const ref = useRef<HTMLButtonElement>(null);
-  let width = useTransform(mouseY, [0, 300], [40, 80]);
+  const width = useTransform(mouseY, [0, 300], [40, 80]);
   console.log(mouseY);
 
   return (
@@ -48,7 +48,7 @@ const Toc = () => {
       tabIndex={0}
       aria-label='Table of contents'
       onMouseOver={(e) => mouseY.set(e.pageY)}
-      onMouseLeave={(e) => mouseY.set(Infinity)}
+      onMouseLeave={() => mouseY.set(Infinity)}
       className='fixed left-0 top-0 z-50 flex h-screen w-full flex-col items-start justify-start gap-2 overflow-y-scroll bg-white px-4 py-10'
     >
       {headings.map((h) => (
