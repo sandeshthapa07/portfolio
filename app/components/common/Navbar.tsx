@@ -49,7 +49,7 @@ export function GooeyMenu() {
     transition.ready.then(() => {
       const animation = document.documentElement.animate(
         {
-          clipPath: !isDark
+          clipPath: isDark
             ? [`circle(${endRadius}px at ${x}px ${y}px)`, `circle(0px at ${x}px ${y}px)`]
             : [`circle(0px at ${x}px ${y}px)`, `circle(${endRadius}px at ${x}px ${y}px)`],
         },
