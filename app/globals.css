@@ -39,7 +39,7 @@
     --radius-large: 12px;
   }
 
-  [data-theme='dark'] {
+  .dark {
     --background: 270, 5%, 7%;
     --foreground: 252 37% 98%;
     --muted: 0 0% 10.98%;
@@ -250,8 +250,8 @@ figure:not(:first-child) {
   @apply w-fit p-4;
 }
 
-[data-theme='dark'] .shiki,
-[data-theme='dark'] .shiki span {
+.dark .shiki,
+.dark .shiki span {
   color: var(--shiki-dark) !important;
   background-color: var(--shiki-dark-bg) !important;
   /* Optional, if you also want font styles */
@@ -297,4 +297,12 @@ h1,
 h2,
 h3.h4 {
   font-size: 1.25rem !important;
+}
+
+/* globals.css */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+  z-index: 999;
 }

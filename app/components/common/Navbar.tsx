@@ -1,17 +1,67 @@
 'use client';
 
-import { useTheme } from 'next-themes';
+import { useRef } from 'react';
+
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { IoMdMoon } from 'react-icons/io';
 import { MdOutlineHome, MdOutlineWbSunny } from 'react-icons/md';
 
-import { themeSwitcher } from '@/app/actions/themeswitcher';
-
 export function GooeyMenu() {
-  const { theme } = useTheme();
   const playSound = () => {
-    const audio = new Audio('/audio/switch.mp3'); // Add sound file in public folder
+    console.log('heelo ');
+    // Your sound playing logic here
+    const audio = new Audio('/path/to/your/sound.mp3'); // Replace with your sound file path
     audio.play();
+  };
+
+  const buttonRef = useRef<HTMLButtonElement>(null);
+
+  const handleThemeToggle = async () => {
+    if (!document.startViewTransition || !buttonRef.current) {
+      return;
+    }
+
+    playSound();
+
+    const isDark = document.documentElement.classList.contains('dark');
+
+    const rect = buttonRef.current.getBoundingClientRect();
+    const x = rect.left + rect.width / 2;
+    const y = rect.top + rect.height / 2;
+
+    const endRadius = Math.hypot(window.innerWidth, window.innerHeight);
+
+    // 👇 1. If switching to dark, pre-apply a "dark-pending" class
+    if (!isDark) {
+      document.documentElement.classList.add('dark-pending');
+    }
+
+    const transition = document.startViewTransition(() => {
+      // 👇 2. Inside the transition, toggle dark mode properly
+      document.documentElement.classList.toggle('dark');
+
+      // 👇 3. Clean up the temp class
+      if (!isDark) {
+        document.documentElement.classList.remove('dark-pending');
+      }
+    });
+
+    transition.ready.then(() => {
+      const animation = document.documentElement.animate(
+        {
+          clipPath: !isDark
+            ? [`circle(${endRadius}px at ${x}px ${y}px)`, `circle(0px at ${x}px ${y}px)`]
+            : [`circle(0px at ${x}px ${y}px)`, `circle(${endRadius}px at ${x}px ${y}px)`],
+        },
+        {
+          duration: 1500,
+          easing: 'ease-in-out',
+          pseudoElement: '::view-transition-new(root)',
+        }
+      );
+
+      return animation.finished;
+    });
   };
 
   return (
@@ -45,11 +95,8 @@ export function GooeyMenu() {
             <MdOutlineHome className='h-5 w-5 text-primary-foreground' />
           </button>
           <button
-            onClick={async () => {
-              await themeSwitcher(theme === 'dark' ? 'light' : 'dark');
-
-              playSound();
-            }}
+            onClick={handleThemeToggle}
+            ref={buttonRef}
             className='absolute bottom-10 right-10 flex h-14 w-14 items-center justify-center rounded-full bg-primary text-primary-foreground transition-transform duration-300 ease-in peer-checked:translate-y-[-162px] peer-checked:duration-1000 peer-checked:ease-[var(--spring-easing)]'
           >
             {/* <HeartIcon className='text-primary-foreground-light-2 dark:text-primary-foreground-dark-1 h-5 w-5' /> */}

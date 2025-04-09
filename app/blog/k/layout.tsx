@@ -9,7 +9,7 @@ const layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <ViewTransition>
       <div className='blog list flex flex-col gap-10'>
-        <Toc />
+        {/* <Toc /> */}
         <ViewTransition name={`name`}> </ViewTransition>
         <Link href='/blog'>Home</Link>
 
