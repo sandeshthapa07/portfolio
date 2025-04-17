@@ -1,8 +1,8 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
-import { MotionValue, motion, useMotionValue, useTransform } from 'motion/react';
+import { MotionValue, motion, useMotionValue } from 'motion/react';
 
 import { cn } from '@/app/lib/utils';
 
@@ -76,18 +76,18 @@ const LineOfTOC = ({
   lineIndex: number;
   h: { text: string; percentage: number };
 }) => {
-  let ref = useRef<HTMLSpanElement>(null);
-  const distance = useTransform(mouseY, (val) => {
-    const bounds = ref?.current?.getBoundingClientRect() ?? { y: 0, height: 0 };
+  // let ref = useRef<HTMLSpanElement>(null);
+  // const distance = useTransform(mouseY, (val) => {
+  //   const bounds = ref?.current?.getBoundingClientRect() ?? { y: 0, height: 0 };
 
-    return Math.abs(bounds?.y - bounds?.height / 2 - val);
-  });
+  //   return Math.abs(bounds?.y - bounds?.height / 2 - val);
+  // });
 
-  const width = useTransform(mouseY, [0, 800, 1600], [128, 150, 128]);
+  // const width = useTransform(mouseY, [0, 800, 1600], [128, 150, 128]);
   return (
     <motion.button key={lineIndex + 1} className='flex flex-col gap-2'>
       <motion.span
-        ref={ref}
+        // ref={ref}
         className={cn('relative h-1 origin-left rounded bg-black', lineIndex === 0 ? 'min-w-24' : 'min-w-16')}
       >
         {lineIndex === 0 && (
