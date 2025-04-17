@@ -76,6 +76,7 @@ const LineOfTOC = ({
   lineIndex: number;
   h: { text: string; percentage: number };
 }) => {
+  console.log(mouseY);
   // let ref = useRef<HTMLSpanElement>(null);
   // const distance = useTransform(mouseY, (val) => {
   //   const bounds = ref?.current?.getBoundingClientRect() ?? { y: 0, height: 0 };
