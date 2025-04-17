@@ -2,15 +2,17 @@
 
 import { useRef } from 'react';
 
+import { useTheme } from 'next-themes';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { IoMdMoon } from 'react-icons/io';
 import { MdOutlineHome, MdOutlineWbSunny } from 'react-icons/md';
+import Link from 'next/link';
 
 export function GooeyMenu() {
+  const { theme, setTheme } = useTheme();
+
   const playSound = () => {
-    console.log('heelo ');
-    // Your sound playing logic here
-    const audio = new Audio('/path/to/your/sound.mp3'); // Replace with your sound file path
+    const audio = new Audio('/audio/switch.mp3');
     audio.play();
   };
 
@@ -36,6 +38,7 @@ export function GooeyMenu() {
     }
 
     const transition = document.startViewTransition(() => {
+      setTheme(isDark ? 'light' : 'dark');
       document.documentElement.classList.toggle('dark');
 
       if (!isDark) {
@@ -100,7 +103,10 @@ export function GooeyMenu() {
             {/* <GearIcon className='text-primary-foreground-light-2 dark:text-primary-foreground-dark-1 h-5 w-5' /> */}
             {/* <span>men2</span> */}
 
-            <MdOutlineHome className='h-5 w-5 text-primary-foreground' />
+            <Link href='/'>
+              {' '}
+              <MdOutlineHome className='h-5 w-5 text-primary-foreground' />{' '}
+            </Link>
           </button>
           <button
             onClick={handleThemeToggle}
@@ -109,10 +115,11 @@ export function GooeyMenu() {
           >
             {/* <HeartIcon className='text-primary-foreground-light-2 dark:text-primary-foreground-dark-1 h-5 w-5' /> */}
             {/* <span>menu3</span> */}
-
-            <IoMdMoon className='text-primary-foreground-light-2 dark:text-primary-foreground-dark-1 hidden h-5 w-5 dark:block' />
-
-            <MdOutlineWbSunny className='text-primary-foreground-light-2 dark:text-primary-foreground-dark-1 block h-5 w-5 dark:hidden' />
+            {theme === `light` ? (
+              <MdOutlineWbSunny className='text-primary-foreground-light-2 h-5 w-5' />
+            ) : (
+              <IoMdMoon className='text-primary-foreground-light-2 text-primary-foreground-dark-1 h-5 w-5' />
+            )}
           </button>
         </nav>
         <svg className='absolute hidden' width='0' height='0' xmlns='http://www.w3.org/2000/svg' version='1.1'>
