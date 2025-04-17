@@ -76,7 +76,18 @@ export function GooeyMenu() {
             } as React.CSSProperties
           }
         >
-          <input type='checkbox' className='peer hidden' name='menu' id='menu' />
+          <input
+            type='checkbox'
+            className='peer hidden'
+            name='menu'
+            onChange={() => {
+              const audio = new Audio('/audio/water-drip.mp3');
+              audio.preload = 'auto';
+              audio.playbackRate = 0.8; // Double speed (1.0 is normal)
+              audio.play().catch((e) => console.error('Audio play failed', e));
+            }}
+            id='menu'
+          />
           <label
             className='absolute bottom-10 right-10 z-10 flex h-14 w-14 cursor-pointer items-center justify-center rounded-full bg-primary text-primary-foreground transition-all duration-1000 ease-[var(--spring-easing)]'
             htmlFor='menu'
