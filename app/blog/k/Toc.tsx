@@ -1,8 +1,10 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
-import { motion, useMotionValue } from 'motion/react';
+import { MotionValue, motion, useMotionValue, useTransform } from 'motion/react';
+
+import { cn } from '@/app/lib/utils';
 
 const Toc = () => {
   const [headings, setHeadings] = useState<{ text: string; percentage: number }[]>([]);
@@ -38,41 +40,62 @@ const Toc = () => {
   }, []);
 
   const mouseY = useMotionValue(0);
-  // const ref = useRef<HTMLButtonElement>(null);
-  // const width = useTransform(mouseY, [0, 300], [40, 80]);
-  // console.log(mouseY.get(), 'dfsdfsdl');
 
   return (
-    <motion.div
-      role='menuitem'
-      tabIndex={0}
-      aria-label='Table of contents'
-      onMouseMove={(e) => {
-        mouseY.set(e.pageY);
-        // console.log(e.pageX, e.pageY);
-      }}
-      onMouseLeave={() => mouseY.set(0)}
-      className='fixed left-0 top-0 z-50 flex h-screen w-full flex-col items-start justify-start gap-2 overflow-y-scroll bg-white px-4 py-10'
-    >
-      {headings.map((h) => (
-        <div key={h.text} className='flex cursor-pointer flex-col gap-2'>
-          {Array.from({ length: h.percentage }).map((_, lineIndex) => (
-            <motion.button key={lineIndex + 1} className='flex flex-col gap-2'>
-              {lineIndex === 0 ? (
-                <span className='relative h-1 w-24 rounded bg-black'>
-                  <span className='absolute left-full top-1/2 w-fit -translate-y-1/2 whitespace-nowrap pl-2 text-black'>
-                    {h.text}
-                  </span>{' '}
-                </span>
-              ) : (
-                <span className='h-1 w-16 rounded bg-black' />
-              )}
-            </motion.button>
-          ))}
-        </div>
-      ))}
-    </motion.div>
+    <div className='fixed left-0 top-0 z-50 flex h-screen w-full flex-col items-start justify-start gap-2 overflow-y-scroll bg-white px-4 py-10'>
+      <div
+        role='menuitem'
+        tabIndex={0}
+        aria-label='Table of contents'
+        onMouseMove={(e) => {
+          mouseY.set(e.pageY);
+        }}
+        onMouseLeave={() => mouseY.set(0)}
+        className='flex flex-col gap-2 bg-red-400'
+      >
+        {headings.map((h) => (
+          <div key={h.text} className='flex cursor-pointer flex-col gap-2'>
+            {Array.from({ length: h.percentage }).map((_, lineIndex) => (
+              <LineOfTOC lineIndex={lineIndex} key={lineIndex + 1} h={h} mouseY={mouseY} />
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
   );
 };
 
 export default Toc;
+
+const LineOfTOC = ({
+  mouseY,
+  lineIndex,
+  h,
+}: {
+  mouseY: MotionValue<number>;
+  lineIndex: number;
+  h: { text: string; percentage: number };
+}) => {
+  let ref = useRef<HTMLSpanElement>(null);
+  const distance = useTransform(mouseY, (val) => {
+    const bounds = ref?.current?.getBoundingClientRect() ?? { y: 0, height: 0 };
+
+    return Math.abs(bounds?.y - bounds?.height / 2 - val);
+  });
+
+  const width = useTransform(mouseY, [0, 800, 1600], [128, 150, 128]);
+  return (
+    <motion.button key={lineIndex + 1} className='flex flex-col gap-2'>
+      <motion.span
+        ref={ref}
+        className={cn('relative h-1 origin-left rounded bg-black', lineIndex === 0 ? 'min-w-24' : 'min-w-16')}
+      >
+        {lineIndex === 0 && (
+          <span className='absolute left-full top-1/2 w-fit -translate-y-1/2 whitespace-nowrap pl-2 text-black'>
+            {h.text}
+          </span>
+        )}
+      </motion.span>
+    </motion.button>
+  );
+};

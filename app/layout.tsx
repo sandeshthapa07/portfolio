@@ -1,5 +1,7 @@
 import { Inter } from 'next/font/google';
 
+import { ThemeProvider } from 'next-themes';
+
 import { GooeyMenu } from './components/common/Navbar';
 import './globals.css';
 
@@ -17,29 +19,27 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en' suppressHydrationWarning>
+    <html lang='en' className='transition-colors duration-1000' suppressHydrationWarning>
       {/* <Head>
         <meta httpEquiv='Accept-CH' content='Sec-CH-Prefers-Color-Scheme, Sec-CH-UA' />
       </Head> */}
 
-      <body
-        className={`${inter.className} group relative flex flex-col items-center justify-center antialiased transition-colors duration-[1500ms]`}
-      >
-        {/* <ThemeProvider attribute='class'> */}
-        {/* {' '}
+      <body className={`${inter.className} group relative flex flex-col items-center justify-center`}>
+        <ThemeProvider attribute='class'>
+          {/* {' '}
           <aside className='scrollable-area flex h-full flex-col border-r border-gray-200 p-3 text-black lg:w-60 xl:w-72'>
             <div className='flex flex-row gap-1'></div>
             <Link href='/blog'>Blog</Link>
             <Link href='/theme-changer'>Theme Changer</Link> */}
 
-        {/* </aside> */}
-        <main className='scrollable-area m-10 flex w-full max-w-2xl flex-1 flex-col'>
-          {/* <ThemeChanger /> */}
-          {children}
-        </main>
+          {/* </aside> */}
+          <main className='scrollable-area m-10 flex w-full max-w-2xl flex-1 flex-col'>
+            {/* <ThemeChanger /> */}
+            {children}
+          </main>
 
-        <GooeyMenu />
-        {/* </ThemeProvider> */}
+          <GooeyMenu />
+        </ThemeProvider>
       </body>
     </html>
   );

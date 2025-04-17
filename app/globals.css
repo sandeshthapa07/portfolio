@@ -39,7 +39,7 @@
     --radius-large: 12px;
   }
 
-  .dark {
+  html.dark {
     --background: 270, 5%, 7%;
     --foreground: 252 37% 98%;
     --muted: 0 0% 10.98%;
@@ -304,5 +304,4 @@ h3.h4 {
 ::view-transition-new(root) {
   animation: none;
   mix-blend-mode: normal;
-  z-index: 999;
 }

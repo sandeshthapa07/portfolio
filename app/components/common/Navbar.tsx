@@ -31,16 +31,13 @@ export function GooeyMenu() {
 
     const endRadius = Math.hypot(window.innerWidth, window.innerHeight);
 
-    // 👇 1. If switching to dark, pre-apply a "dark-pending" class
     if (!isDark) {
       document.documentElement.classList.add('dark-pending');
     }
 
     const transition = document.startViewTransition(() => {
-      // 👇 2. Inside the transition, toggle dark mode properly
       document.documentElement.classList.toggle('dark');
 
-      // 👇 3. Clean up the temp class
       if (!isDark) {
         document.documentElement.classList.remove('dark-pending');
       }
@@ -49,12 +46,12 @@ export function GooeyMenu() {
     transition.ready.then(() => {
       const animation = document.documentElement.animate(
         {
-          clipPath: isDark
-            ? [`circle(${endRadius}px at ${x}px ${y}px)`, `circle(0px at ${x}px ${y}px)`]
-            : [`circle(0px at ${x}px ${y}px)`, `circle(${endRadius}px at ${x}px ${y}px)`],
+          clipPath:
+            // ? [`circle(${endRadius}px at ${x}px ${y}px)`, `circle(0px at ${x}px ${y}px)`]
+            [`circle(0px at ${x}px ${y}px)`, `circle(${endRadius}px at ${x}px ${y}px)`],
         },
         {
-          duration: 1500,
+          duration: 1000,
           easing: 'ease-in-out',
           pseudoElement: '::view-transition-new(root)',
         }

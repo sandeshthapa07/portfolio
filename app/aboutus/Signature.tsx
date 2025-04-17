@@ -6,7 +6,7 @@ const Signature = () => {
 
   return (
     <div className='mt-3'>
-      <svg xmlns='http://www.w3.org/2000/svg' width='571' height='200' viewBox='-0.76 11.15 142.71 43.46'>
+      <svg xmlns='http://www.w3.org/2000/svg' width='200' height='100' viewBox='-0.76 11.15 142.71 43.46'>
         <defs>
           <linearGradient id='strokeGradient' x1='0%' y1='0%' x2='100%' y2='0%'>
             <stop offset='0%' stopColor='#4facfe' />
@@ -18,7 +18,7 @@ const Signature = () => {
           d={path}
           fill='none'
           stroke='currentColor'
-          strokeWidth={2}
+          strokeWidth={1}
           strokeLinecap='round'
           strokeLinejoin='round'
           initial={{

@@ -3,8 +3,6 @@
 import Link from 'next/link';
 import React, { unstable_ViewTransition as ViewTransition } from 'react';
 
-import Toc from './Toc';
-
 const layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <ViewTransition>
