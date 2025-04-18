@@ -33,7 +33,7 @@ export default async function RootLayout({
             <Link href='/theme-changer'>Theme Changer</Link> */}
 
           {/* </aside> */}
-          <main className='scrollable-area m-10 flex w-full max-w-2xl flex-1 flex-col'>
+          <main className='scrollable-area flex w-full max-w-2xl flex-1 flex-col p-4'>
             {/* <ThemeChanger /> */}
             {children}
           </main>

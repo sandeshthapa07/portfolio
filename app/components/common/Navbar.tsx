@@ -1,12 +1,12 @@
 'use client';
 
+import Link from 'next/link';
 import { useRef } from 'react';
 
 import { useTheme } from 'next-themes';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { IoMdMoon } from 'react-icons/io';
 import { MdOutlineHome, MdOutlineWbSunny } from 'react-icons/md';
-import Link from 'next/link';
 
 export function GooeyMenu() {
   const { theme, setTheme } = useTheme();
@@ -66,7 +66,7 @@ export function GooeyMenu() {
 
   return (
     <>
-      <div className='fixed bottom-0 right-0 z-20 h-[300px] w-12'>
+      <div className='fixed bottom-0 right-0 z-40 h-[300px] w-12'>
         <nav
           className='menu w-fit'
           style={

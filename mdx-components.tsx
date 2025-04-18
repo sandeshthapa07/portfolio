@@ -19,7 +19,7 @@ const components: MDXComponents = {
   //   return <VideoViewer videoSrc={videoSrc} />;
   // },
   h2: ({ children, id }: React.HTMLAttributes<HTMLHeadingElement>) => {
-    console.log('id', id, children);
+   
     if (id?.includes('footnote-label')) {
       return null;
     }

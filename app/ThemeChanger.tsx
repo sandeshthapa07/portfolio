@@ -3,8 +3,7 @@
 import { useTheme } from 'next-themes';
 
 const ThemeChanger = () => {
-  const { theme, setTheme } = useTheme();
-  console.log(theme);
+  const { setTheme } = useTheme();
 
   return (
     <div>
