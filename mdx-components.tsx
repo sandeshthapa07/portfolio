@@ -79,6 +79,8 @@ declare global {
   type MDXProvidedComponents = typeof components;
 }
 
+
+
 export function CustomMDX(props: any) {
   return <MDXRemote {...props} components={{ ...components, ...(props.components ?? {}) }} />;
 }
