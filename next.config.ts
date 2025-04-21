@@ -6,6 +6,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   pageExtensions: ["js", "jsx", "mdx", "ts", "md", "tsx"],
   reactStrictMode: true,
+  transpilePackages: ['next-mdx-remote'],
   experimental: {
     viewTransition: true,
   },

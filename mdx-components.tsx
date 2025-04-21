@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
 import type { MDXComponents } from 'mdx/types';
+import { MDXRemote } from 'next-mdx-remote/rsc';
 
 import { cn } from './app/lib/utils';
 
@@ -8,7 +9,7 @@ type AnchorProps = React.HTMLAttributes<HTMLAnchorElement> & {
   href?: string;
 };
 
-const components: MDXComponents = {
+export const components: MDXComponents = {
   // ImageCarousel: ({ imageUrls }: ImageCarouselProps) => {
   //   return <ImageCarousel imageUrls={imageUrls} />;
   // },
@@ -19,7 +20,6 @@ const components: MDXComponents = {
   //   return <VideoViewer videoSrc={videoSrc} />;
   // },
   h2: ({ children, id }: React.HTMLAttributes<HTMLHeadingElement>) => {
-   
     if (id?.includes('footnote-label')) {
       return null;
     }
@@ -75,10 +75,10 @@ const components: MDXComponents = {
   ),
 };
 
-// declare global {
-//   type MDXProvidedComponents = typeof components;
-// }
+declare global {
+  type MDXProvidedComponents = typeof components;
+}
 
-export function useMDXComponents() {
-  return components;
+export function CustomMDX(props: any) {
+  return <MDXRemote {...props} components={{ ...components, ...(props.components ?? {}) }} />;
 }

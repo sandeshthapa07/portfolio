@@ -1,18 +1,10 @@
-'use client';
+import { CustomMDX } from '@/mdx-components';
 
-import Link from 'next/link';
-import { unstable_ViewTransition as ViewTransition } from 'react';
-
-const Page = () => {
+const Page = async () => {
   return (
-    <ViewTransition>
-      <div className='blog list flex'>
-        <ViewTransition name={`name`}>
-          <h1 className=''>sandesh thapa </h1>
-        </ViewTransition>
-      </div>
-      <Link href='/blog/k'>Home df</Link>
-    </ViewTransition>
+    <CustomMDX
+      source={`Let's delve into the arguments for both sides and consider why this debate remains relevant in the software development world.`}
+    />
   );
 };
 
