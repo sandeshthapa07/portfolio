@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useRef } from 'react';
 
+import { motion } from 'motion/react';
 import { useTheme } from 'next-themes';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { IoMdMoon } from 'react-icons/io';
@@ -109,17 +110,22 @@ export function GooeyMenu() {
             </Link>
           </button>
           <button
+            tabIndex={0}
+            aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
             onClick={handleThemeToggle}
+            onKeyDown={(e) => e.key === 'Enter' && handleThemeToggle()}
             ref={buttonRef}
             className='absolute bottom-10 right-10 flex h-14 w-14 items-center justify-center rounded-full bg-primary text-primary-foreground transition-transform duration-300 ease-in peer-checked:translate-y-[-162px] peer-checked:duration-1000 peer-checked:ease-[var(--spring-easing)]'
           >
-            {/* <HeartIcon className='text-primary-foreground-light-2 dark:text-primary-foreground-dark-1 h-5 w-5' /> */}
-            {/* <span>menu3</span> */}
-            {theme === `light` ? (
-              <MdOutlineWbSunny className='text-primary-foreground-light-2 h-5 w-5' />
-            ) : (
-              <IoMdMoon className='text-primary-foreground-light-2 text-primary-foreground-dark-1 h-5 w-5' />
-            )}
+            <motion.span animate={{ rotate: theme === 'dark' ? 0 : 180 }}>
+              {/* <HeartIcon className='text-primary-foreground-light-2 dark:text-primary-foreground-dark-1 h-5 w-5' /> */}
+              {/* <span>menu3</span> */}
+              {theme === `light` ? (
+                <MdOutlineWbSunny className='text-primary-foreground-light-2 h-5 w-5' />
+              ) : (
+                <IoMdMoon className='text-primary-foreground-light-2 text-primary-foreground-dark-1 h-5 w-5' />
+              )}
+            </motion.span>
           </button>
         </nav>
         <svg className='absolute hidden' width='0' height='0' xmlns='http://www.w3.org/2000/svg' version='1.1'>
