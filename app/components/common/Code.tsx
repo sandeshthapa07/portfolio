@@ -1,4 +1,3 @@
-// [!code ++]
 import type { BundledLanguage, BundledTheme } from 'shiki';
 import { codeToHtml } from 'shiki';
 
@@ -23,6 +22,8 @@ export default async function Code({ code, lang = 'javascript', filename, parent
   if (parent) {
     return <span dangerouslySetInnerHTML={{ __html: html }}></span>;
   }
+
+
 
   return (
     <div className='codehighlighter relative my-4 w-full rounded-lg border border-border'>

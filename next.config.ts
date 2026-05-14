@@ -1,25 +1,15 @@
+//** @type {import('next').NextConfig} */
 
-import createMDX from '@next/mdx';
-import type { NextConfig } from "next";
+const createMDX = require('@next/mdx')
 
+const withMDX = createMDX({})
 
-const nextConfig: NextConfig = {
-  pageExtensions: ["js", "jsx", "mdx", "ts", "md", "tsx"],
-  reactStrictMode: true,
-  transpilePackages: ['next-mdx-remote'],
-  experimental: {
-    viewTransition: true,
-  },
-};
- 
-const withMDX = createMDX({
-  extension: /\.mdx?$/,
-  
- 
-});
+const nextConfig = {
+  output: 'standalone',
+  pageExtensions: ['ts', 'tsx', 'mdx'],
+}
 
-export default withMDX(nextConfig);
-
+module.exports = withMDX(nextConfig)
 
 
 

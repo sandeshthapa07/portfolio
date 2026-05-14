@@ -2,7 +2,9 @@ import Link from 'next/link';
 
 import type { MDXComponents } from 'mdx/types';
 import { MDXRemote } from 'next-mdx-remote/rsc';
+import { BundledLanguage } from 'shiki';
 
+import Code from './app/components/common/Code';
 import { cn } from './app/lib/utils';
 
 type AnchorProps = React.HTMLAttributes<HTMLAnchorElement> & {
@@ -73,13 +75,20 @@ export const components: MDXComponents = {
   blockquote: ({ className, ...props }: React.HTMLAttributes<HTMLQuoteElement>) => (
     <blockquote className={cn('border-gray-4 mt-6 border-l-2 pl-6 italic text-muted', className)} {...props} />
   ),
+  // In your components object
+  pre: ({ children }: React.HTMLAttributes<HTMLPreElement>) => {
+    const codeEl = children as React.ReactElement<{ children: string; className: string }>;
+    const code = codeEl?.props?.children as string;
+    const className = codeEl?.props?.className as string; // "language-typescript"
+    const lang = className?.replace('language-', '') as BundledLanguage;
+
+    return <Code code={code?.trim()} lang={lang || 'javascript'} />;
+  },
 };
 
 declare global {
   type MDXProvidedComponents = typeof components;
 }
-
-
 
 export function CustomMDX(props: any) {
   return <MDXRemote {...props} components={{ ...components, ...(props.components ?? {}) }} />;

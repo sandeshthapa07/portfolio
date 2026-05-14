@@ -1,4 +1,5 @@
 export default async function Home() {
+
   return (
     <div className='content-wrapper relative -mt-20 flex h-screen items-center justify-center'>
       <div className='flex flex-col gap-1 md:max-w-screen-sm'>

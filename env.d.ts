@@ -1,13 +1,11 @@
-import * as Yup from 'yup';
-
-export const schema = Yup.object().shape({
-  DATABASE_URL: Yup.string().required(),
-  DATABASE_NAME: Yup.string().required(),
-  DATABASE_PASSWORD: Yup.string().required(),
-});
-
-export type Env = Yup.InferType<typeof schema>;
-
-declare namespace NodeJS {
-  export type ProcessEnv = Env;
+// env.d.ts
+namespace NodeJS {
+  interface ProcessEnv {
+    DATABASE_URL: string;
+    NEXTAUTH_SECRET: string;
+    NEXTAUTH_URL: string;
+    NEXT_PUBLIC_API_URL: string;
+    NEXT_PUBLIC_APP_URL: string;
+    NODE_ENV: 'development' | 'production' | 'test';
+  }
 }

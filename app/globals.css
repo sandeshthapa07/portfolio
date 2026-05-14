@@ -172,60 +172,6 @@ article {
   * Here we are setting up the styles for our footnotes and references.
   */
 
-.shiki {
-  counter-reset: step;
-  counter-increment: step 0;
-  .line {
-    @apply border-l-4 border-transparent;
-    &::before {
-      counter-increment: step;
-      @apply mr-6 inline-block w-4 border-transparent text-right text-neutral-600 content-[counter(step)];
-    }
-    &.highlighted,
-    &.diff {
-      @apply -ml-4 -mr-5 inline-block w-[calc(100%+(theme(spacing.5)+theme(spacing.4)))] pl-4 pr-5;
-    }
-    &.highlighted {
-      @apply border-neutral-500 bg-neutral-800;
-    }
-    &.diff {
-      &.add,
-      &.remove {
-        span:first-child::before {
-          @apply -ml-4 inline-flex w-4;
-        }
-      }
-      &.add {
-        @apply border-blue-500 bg-blue-500/25 before:text-blue-500;
-        span:first-child::before {
-          @apply text-blue-500 content-["+"];
-        }
-      }
-      &.remove {
-        @apply border-orange-500 bg-orange-500/30 opacity-70 *:!text-neutral-400 before:text-orange-500;
-        span:first-child::before {
-          @apply text-orange-500 content-["-"];
-        }
-      }
-    }
-  }
-}
-
-.code-data > pre {
-  @apply w-full overflow-x-auto p-4;
-}
-
-.dark .shiki,
-.dark .shiki span {
-  color: var(--shiki-dark) !important;
-  background-color: var(--shiki-dark-bg) !important;
-  /* Optional, if you also want font styles */
-  font-style: var(--shiki-dark-font-style) !important;
-  font-size: 1rem;
-  font-weight: var(--shiki-dark-font-weight) !important;
-  text-decoration: var(--shiki-dark-text-decoration) !important;
-}
-
 [data-support-yes],
 [data-support-no] {
   display: none;
@@ -273,4 +219,50 @@ article {
 .code-data[data-filename]:not([data-filename=''])::before {
   content: attr(data-filename);
   @apply block w-full border-b border-border p-4 text-sm text-neutral-500;
+}
+
+.codehighlighter {
+  position: relative;
+  width: 100%;
+  margin: 1rem 0;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border);
+}
+
+.code-data {
+  position: relative;
+  width: 100%;
+}
+
+.code-data[data-filename]:not([data-filename=''])::before {
+  content: attr(data-filename);
+  display: block;
+  padding: 0.4rem 1rem;
+  font-size: 12px;
+  color: var(--muted-foreground);
+  border-bottom: 1px solid var(--border);
+  font-family: var(--font-mono);
+}
+
+.code-data pre {
+  margin: 0;
+  padding: 1rem;
+  overflow-x: auto;
+  border-radius: 0;
+}
+
+.code-data:not([data-filename='']) pre,
+.code-data[data-filename=''] pre {
+  border-radius: 0 0 0.5rem 0.5rem;
+}
+
+.code-data pre:only-child {
+  border-radius: 0.5rem;
+}
+
+.code-data code {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.7;
+  counter-reset: line;
 }
