@@ -5,7 +5,7 @@ export default async function Home() {
   return (
     <div className='content-wrapper relative -mt-20 flex h-screen items-center justify-center'>
       <div className='flex flex-col gap-1 md:max-w-screen-sm'>
-        <h1 className='text-lg font-medium'> Hello, I’m {process.env.HOSTNAME}</h1>
+        <h1 className='text-lg font-medium'> Hello, I’m {process.env.NAME}</h1>
         <Link href="/blog">{process.env.NEXT_PUBLIC_SITE_URL}</Link>
         <p>
           I give <span className='text-green-500'>life</span> and <span className='text-red-500'>emotion</span> to the
